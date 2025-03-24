@@ -17,7 +17,7 @@
 > By the way this is simple demo that it is possible... nothing special except
 > explicit swapping `node/npm` with `deno`... it's just work!
 
-### [Live example at nestjs-deno.deno.dev](nestjs-deno.deno.dev)
+### [Live example at nestjs-deno.deno.dev](https://nestjs-deno.deno.dev)
 
 #### Issues
 
