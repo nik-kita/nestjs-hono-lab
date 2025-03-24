@@ -1,9 +1,9 @@
 name: Deploy
 on:
   push:
-    branches: main
+    branches: [dev]
   pull_request:
-    branches: main
+    branches: [main]
 
 jobs:
   deploy:
@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "nestjs-hono"
+          project: "nestjs-deno"
           entrypoint: "src/main.ts"
           root: "."
