@@ -24,3 +24,7 @@
 - Nestjs is written with first typescript decorators versions and so...
   `Warning experimentalDecorators compiler option is deprecated and may be removed at any time`
   such warning is already present
+
+## Project
+
+- notes about [problems](./problems.md)
