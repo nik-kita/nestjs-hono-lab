@@ -32,5 +32,3 @@ jobs:
           project: "nestjs-hono"
           entrypoint: "src/main.ts"
           root: "."
-          
-          
