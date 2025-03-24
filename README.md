@@ -1,6 +1,6 @@
 <div align="center">
   <span>
-    <a href="https://deno.com" target="blank"><img src="./deno-logo.full_primary_transparent.svg" width="300" alt="Deno Logo" /></a>
+    <a href="https://deno.com" target="blank"><img src="./deno-logo.full_dark_filled.png" width="300" alt="Deno Logo" /></a>
   </span>
   <span>
     <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
