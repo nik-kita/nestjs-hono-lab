@@ -2,8 +2,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
-import { AppController } from "./app.controller.ts";
-import { AppService } from "./app.service.ts";
+import { resolver_Blog } from "./feature/blog/resolver_Blog.ts";
 
 export const playground_plugin = ApolloServerPluginLandingPageLocalDefault() as // deno-lint-ignore no-explicit-any
 any;
@@ -19,7 +18,8 @@ any;
       ],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    resolver_Blog,
+  ],
 })
 export class AppModule {}

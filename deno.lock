@@ -6,7 +6,7 @@
     "npm:@apollo/server@^4.11.3": "4.11.3_graphql@16.10.0",
     "npm:@nestjs/apollo@^13.0.4": "13.0.4_@apollo+server@4.11.3__graphql@16.10.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+graphql@13.0.4__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@11.0.12___@nestjs+common@11.0.12____reflect-metadata@0.2.2____rxjs@7.8.2___reflect-metadata@0.2.2___rxjs@7.8.2__graphql@16.10.0__reflect-metadata@0.2.2__rxjs@7.8.2__ws@8.18.1_graphql@16.10.0_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/common@^10.4.1": "10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-    "npm:@nestjs/core@^10.4.1": "10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+    "npm:@nestjs/core@^11.0.12": "11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/graphql@^13.0.4": "13.0.4_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_graphql@16.10.0_reflect-metadata@0.2.2_rxjs@7.8.2_ws@8.18.1",
     "npm:@nestjs/platform-express@^10.4.1": "10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/swagger@^7.4.0": "7.4.2_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+core@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+platform-express@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2",
@@ -281,22 +281,7 @@
       "integrity": "sha512-UBejmdiYwaH6fTsz2QFBlC1cJHM+3UDeLZN+CiP9I1fRv2KlBZsmozGLbV5eS1JAVWJB4T5N5yQ0gjN8ZvcS2w==",
       "dependencies": [
         "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/platform-express@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nuxtjs/opencollective",
-        "fast-safe-stringify",
-        "iterare",
-        "path-to-regexp@3.3.0",
-        "reflect-metadata",
-        "rxjs",
-        "tslib",
-        "uid"
-      ]
-    },
-    "@nestjs/core@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
-      "integrity": "sha512-UBejmdiYwaH6fTsz2QFBlC1cJHM+3UDeLZN+CiP9I1fRv2KlBZsmozGLbV5eS1JAVWJB4T5N5yQ0gjN8ZvcS2w==",
-      "dependencies": [
-        "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/platform-express@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+core@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+        "@nestjs/platform-express",
         "@nuxtjs/opencollective",
         "fast-safe-stringify",
         "iterare",
@@ -355,18 +340,6 @@
       "dependencies": [
         "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2",
         "reflect-metadata"
-      ]
-    },
-    "@nestjs/platform-express@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+core@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
-      "integrity": "sha512-63ZZPkXHjoDyO7ahGOVcybZCRa7/Scp6mObQKjcX/fTEq1YJeU75ELvMsuQgc8U2opMGOBD7GVuc4DV0oeDHoA==",
-      "dependencies": [
-        "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/core@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "body-parser",
-        "cors",
-        "express",
-        "multer",
-        "tslib"
       ]
     },
     "@nestjs/platform-express@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
@@ -1367,7 +1340,7 @@
       "npm:@apollo/server@^4.11.3",
       "npm:@nestjs/apollo@^13.0.4",
       "npm:@nestjs/common@^10.4.1",
-      "npm:@nestjs/core@^10.4.1",
+      "npm:@nestjs/core@^11.0.12",
       "npm:@nestjs/graphql@^13.0.4",
       "npm:@nestjs/platform-express@^10.4.1",
       "npm:@nestjs/swagger@^7.4.0",
