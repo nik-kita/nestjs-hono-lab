@@ -9,7 +9,7 @@
     "npm:@nestjs/core@^11.0.12": "11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/graphql@^13.0.4": "13.0.4_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_graphql@16.10.0_reflect-metadata@0.2.2_rxjs@7.8.2_ws@8.18.1",
     "npm:@nestjs/platform-express@^10.4.1": "10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-    "npm:@nestjs/swagger@^7.4.0": "7.4.2_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+core@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+platform-express@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2",
+    "npm:@nestjs/swagger@^11.1.0": "11.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:graphql@^16.10.0": "16.10.0",
     "npm:reflect-metadata@~0.2.2": "0.2.2",
     "npm:rxjs@^7.8.1": "7.8.2"
@@ -314,7 +314,7 @@
         "@graphql-tools/utils@10.8.6_graphql@16.10.0",
         "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2",
         "@nestjs/core@11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/mapped-types@2.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+        "@nestjs/mapped-types",
         "chokidar",
         "fast-glob",
         "graphql",
@@ -326,13 +326,6 @@
         "subscriptions-transport-ws",
         "tslib",
         "ws@8.18.1"
-      ]
-    },
-    "@nestjs/mapped-types@2.0.5_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
-      "integrity": "sha512-bSJv4pd6EY99NX9CjBIyn4TVDoSit82DUZlL4I3bqNfy5Gt+gXTa86i3I/i0iIV9P4hntcGM5GyO+FhZAhxtyg==",
-      "dependencies": [
-        "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "reflect-metadata"
       ]
     },
     "@nestjs/mapped-types@2.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
@@ -354,16 +347,16 @@
         "tslib"
       ]
     },
-    "@nestjs/swagger@7.4.2_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+core@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+platform-express@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2": {
-      "integrity": "sha512-Mu6TEn1M/owIvAx2B4DUQObQXqo2028R2s9rSZ/hJEgBK95+doTwS0DjmVA2wTeZTyVtXOoN7CsoM5pONBzvKQ==",
+    "@nestjs/swagger@11.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
+      "integrity": "sha512-+GQ+q1ASTBvGi0DYHukWi8NVVVLszedwLLqHdLRnJh8rjokt8YTDb7roImvT/YMmYgPvaWBv/4JYdZH4FueLPQ==",
       "dependencies": [
         "@microsoft/tsdoc",
-        "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/core@10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+platform-express@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+core@10.4.15___@nestjs+common@10.4.15____reflect-metadata@0.2.2____rxjs@7.8.2___@nestjs+platform-express@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/mapped-types@2.0.5_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+        "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2",
+        "@nestjs/core@11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+        "@nestjs/mapped-types",
         "js-yaml",
         "lodash",
-        "path-to-regexp@3.3.0",
+        "path-to-regexp@8.2.0",
         "reflect-metadata",
         "swagger-ui-dist"
       ]
@@ -432,6 +425,9 @@
     },
     "@protobufjs/utf8@1.1.0": {
       "integrity": "sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw=="
+    },
+    "@scarf/scarf@1.4.0": {
+      "integrity": "sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ=="
     },
     "@types/body-parser@1.19.5": {
       "integrity": "sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==",
@@ -1246,8 +1242,11 @@
         "has-flag"
       ]
     },
-    "swagger-ui-dist@5.17.14": {
-      "integrity": "sha512-CVbSfaLpstV65OnSjbXfVd6Sta3q3F7Cj/yYuvHMp1P90LztOLs6PfUnKEVAeiIVQt9u2SaPwv0LiH/OyMjHRw=="
+    "swagger-ui-dist@5.20.1": {
+      "integrity": "sha512-qBPCis2w8nP4US7SvUxdJD3OwKcqiWeZmjN2VWhq2v+ESZEXOP/7n4DeiOiiZcGYTKMHAHUUrroHaTsjUWTEGw==",
+      "dependencies": [
+        "@scarf/scarf"
+      ]
     },
     "symbol-observable@1.2.0": {
       "integrity": "sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ=="
@@ -1343,7 +1342,7 @@
       "npm:@nestjs/core@^11.0.12",
       "npm:@nestjs/graphql@^13.0.4",
       "npm:@nestjs/platform-express@^10.4.1",
-      "npm:@nestjs/swagger@^7.4.0",
+      "npm:@nestjs/swagger@^11.1.0",
       "npm:graphql@^16.10.0",
       "npm:reflect-metadata@~0.2.2",
       "npm:rxjs@^7.8.1"
