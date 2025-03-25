@@ -1,15 +1,21 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { Post } from "./Post.ts";
-import { type Type } from "@nestjs/common";
+import {
+  Field,
+  ID,
+  IntersectionType,
+  ObjectType,
+  PickType,
+} from "@nestjs/graphql";
+import { Prop_post_Post } from "../core/Prop_post_Post.ts";
+import { Prop_posts_Post_array } from "../core/Prop_posts_Post_array.ts";
 
 @ObjectType()
-export class Author {
+export class Author extends IntersectionType(
+  PickType(Prop_posts_Post_array, ["posts"]),
+  PickType(Prop_post_Post, ["post"]),
+) {
   @Field(() => ID)
   _id!: string;
 
   @Field(() => String, { nullable: true })
   name: string | null = null;
-
-  @Field(() => [Post])
-  posts: Type<Post>[] = [];
 }

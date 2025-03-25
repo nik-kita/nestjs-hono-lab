@@ -8,8 +8,10 @@
     "npm:@nestjs/common@^10.4.1": "10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/core@^11.0.12": "11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/graphql@^13.0.4": "13.0.4_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_graphql@16.10.0_reflect-metadata@0.2.2_rxjs@7.8.2_ws@8.18.1",
+    "npm:@nestjs/mapped-types@^2.1.0": "2.1.0_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_class-transformer@0.5.1_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/platform-express@^10.4.1": "10.4.15_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@10.4.15__@nestjs+common@10.4.15___reflect-metadata@0.2.2___rxjs@7.8.2__@nestjs+platform-express@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
     "npm:@nestjs/swagger@^11.1.0": "11.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_@nestjs+core@11.0.12__@nestjs+common@11.0.12___reflect-metadata@0.2.2___rxjs@7.8.2__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
+    "npm:class-transformer@~0.5.1": "0.5.1",
     "npm:graphql@^16.10.0": "16.10.0",
     "npm:reflect-metadata@~0.2.2": "0.2.2",
     "npm:rxjs@^7.8.1": "7.8.2"
@@ -267,6 +269,17 @@
         "uid"
       ]
     },
+    "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2_class-transformer@0.5.1": {
+      "integrity": "sha512-vaLg1ZgwhG29BuLDxPA9OAcIlgqzp9/N8iG0wGapyUNTf4IY4O6zAHgN6QalwLhFxq7nOI021vdRojR1oF3bqg==",
+      "dependencies": [
+        "class-transformer",
+        "iterare",
+        "reflect-metadata",
+        "rxjs",
+        "tslib",
+        "uid"
+      ]
+    },
     "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2": {
       "integrity": "sha512-6PXxmDe2iYmb57xacnxzpW1NAxRZ7Gf+acMT7/hmRB/4KpZiFU/cNvLWwgbM2BL5QSzQulOwY6ny5bbKnPpB+A==",
       "dependencies": [
@@ -314,7 +327,7 @@
         "@graphql-tools/utils@10.8.6_graphql@16.10.0",
         "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2",
         "@nestjs/core@11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/mapped-types",
+        "@nestjs/mapped-types@2.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
         "chokidar",
         "fast-glob",
         "graphql",
@@ -326,6 +339,14 @@
         "subscriptions-transport-ws",
         "tslib",
         "ws@8.18.1"
+      ]
+    },
+    "@nestjs/mapped-types@2.1.0_@nestjs+common@10.4.15__reflect-metadata@0.2.2__rxjs@7.8.2_class-transformer@0.5.1_reflect-metadata@0.2.2_rxjs@7.8.2": {
+      "integrity": "sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw==",
+      "dependencies": [
+        "@nestjs/common@10.4.15_reflect-metadata@0.2.2_rxjs@7.8.2_class-transformer@0.5.1",
+        "class-transformer",
+        "reflect-metadata"
       ]
     },
     "@nestjs/mapped-types@2.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2": {
@@ -353,7 +374,7 @@
         "@microsoft/tsdoc",
         "@nestjs/common@11.0.12_reflect-metadata@0.2.2_rxjs@7.8.2",
         "@nestjs/core@11.0.12_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
-        "@nestjs/mapped-types",
+        "@nestjs/mapped-types@2.1.0_@nestjs+common@11.0.12__reflect-metadata@0.2.2__rxjs@7.8.2_reflect-metadata@0.2.2_rxjs@7.8.2",
         "js-yaml",
         "lodash",
         "path-to-regexp@8.2.0",
@@ -604,6 +625,9 @@
       "dependencies": [
         "readdirp"
       ]
+    },
+    "class-transformer@0.5.1": {
+      "integrity": "sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw=="
     },
     "color-convert@2.0.1": {
       "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
@@ -1341,8 +1365,10 @@
       "npm:@nestjs/common@^10.4.1",
       "npm:@nestjs/core@^11.0.12",
       "npm:@nestjs/graphql@^13.0.4",
+      "npm:@nestjs/mapped-types@^2.1.0",
       "npm:@nestjs/platform-express@^10.4.1",
       "npm:@nestjs/swagger@^11.1.0",
+      "npm:class-transformer@~0.5.1",
       "npm:graphql@^16.10.0",
       "npm:reflect-metadata@~0.2.2",
       "npm:rxjs@^7.8.1"
