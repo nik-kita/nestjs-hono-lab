@@ -1,14 +1,14 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { Task } from "../domain/Task.ts";
-import { TaskStatus } from "../domain/TaskStatus.ts";
-import { TaskType } from "../domain/TaskType.ts";
-import { CoreDtoInput } from "./Core_Input_Dto.input-dto.ts";
+import { TaskType } from "../domain/TaskType.enum.ts";
+import { Base_Input_Dto } from "../common/Base_Input_Dto.ts";
+import { ITask } from "../domain/ITask.interface.ts";
+import { TaskStatus } from "../domain/TaskStatus.enum.ts";
 
 @ObjectType({ isAbstract: true })
-export class Required_Task_Dto extends CoreDtoInput implements
+export class Required_Task_Dto extends Base_Input_Dto implements
   Omit<
-    Task,
-    keyof Pick<Task, "blockers" | "parent_task" | "subtasks" | "topics">
+    ITask,
+    keyof Pick<ITask, "blockers" | "parent_task" | "subtasks" | "topics">
   > {
   @Field(() => TaskType)
   type!: TaskType;

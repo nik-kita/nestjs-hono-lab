@@ -1,6 +1,6 @@
 import { Resolver } from "@nestjs/graphql";
-import { Dto_Task } from "./dto/Dto_Task.dto.ts";
+import { Task } from "./dto/Task.dto.ts";
 
-@Resolver(() => Dto_Task)
+@Resolver(() => Task)
 export class Resolver_Task {
 }

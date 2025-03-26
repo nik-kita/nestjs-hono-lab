@@ -1,16 +1,16 @@
 import { Args, Mutation, Resolver } from "@nestjs/graphql";
-import { TaskStatus } from "./domain/TaskStatus.ts";
-import { TaskType } from "./domain/TaskType.ts";
+import { TaskType } from "./domain/TaskType.enum.ts";
 import { db } from "./draft/db.ts";
-import { Dto_Task } from "./dto/Dto_Task.dto.ts";
+import { Task } from "./dto/Task.dto.ts";
 import { Input_Task_create } from "./input/Input_Task_create.input.ts";
+import { TaskStatus } from "./domain/TaskStatus.enum.ts";
 
 @Resolver()
 export class MutationResolver_TaskManagement {
-  @Mutation(() => Dto_Task)
+  @Mutation(() => Task)
   async create_task(
     @Args("input") input: Input_Task_create,
-  ): Promise<Dto_Task> {
+  ): Promise<Task> {
     await Promise.resolve();
     const now = new Date();
     const task = {

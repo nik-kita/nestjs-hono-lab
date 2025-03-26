@@ -1,11 +1,11 @@
 import { Query, Resolver } from "@nestjs/graphql";
 import { db } from "./draft/db.ts";
-import { Dto_Task } from "./dto/Dto_Task.dto.ts";
+import { Task } from "./dto/Task.dto.ts";
 
 @Resolver()
 export class QueryResolver_TaskManagement {
-  @Query(() => [Dto_Task])
-  async tasks(): Promise<Dto_Task[]> {
+  @Query(() => [Task])
+  async tasks(): Promise<Task[]> {
     await Promise.resolve();
 
     return db.tasks;
