@@ -7,6 +7,7 @@ import {
   DataProvider_Post,
   Resolver_Post,
 } from "./feature/blog/resolvers/Resolver_Post.ts";
+import { Module_TaskManagement } from "./feature/task-management/Module_TaskManagement.module.ts";
 
 export const playground_plugin = ApolloServerPluginLandingPageLocalDefault() as // deno-lint-ignore no-explicit-any
 any;
@@ -21,6 +22,7 @@ any;
         playground_plugin,
       ],
     }),
+    Module_TaskManagement,
   ],
   providers: [
     resolver_Blog,
