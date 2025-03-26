@@ -8,7 +8,7 @@ import {
 import { Partial_Task_Dto } from "../core/Partial_Task_Dto.dto.ts";
 import { Required_Task_Dto } from "../core/Required_Task_Dto.dto.ts";
 import { ITask } from "../domain/ITask.interface.ts";
-import { ITopic } from "../domain/ITopic.interface.ts";
+import { Topic } from "./Topic.dto.ts";
 
 const partials = [
   "description",
@@ -19,12 +19,12 @@ export class Task extends IntersectionType(
   OmitType(Required_Task_Dto, partials),
   PickType(Partial_Task_Dto, partials),
 ) implements ITask {
-  @Field(() => [])
-  topics!: ITopic[];
+  @Field(() => [Topic])
+  topics!: Topic[];
   @Field(() => [Task])
-  subtasks!: ITask[];
+  subtasks!: Task[];
   @Field(() => Task, { nullable: true, defaultValue: null })
-  parent_task?: ITask | null = null;
+  parent_task?: Task | null = null;
   @Field(() => [Task])
-  blockers!: ITask[];
+  blockers!: Task[];
 }
