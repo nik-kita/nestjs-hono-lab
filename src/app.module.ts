@@ -1,11 +1,33 @@
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
-import { GraphQLModule } from "@nestjs/graphql";
-import { KnotsExchange_module } from "./feature/knots-exchange/KnotsExchange_module.ts";
+import {
+  Field,
+  GraphQLModule,
+  ObjectType,
+  Query,
+  Resolver,
+} from "@nestjs/graphql";
+import { Module_KnotsExchange } from "./feature/knots-exchange/Module_KnotsExchange.ts";
 
 export const playground_plugin = ApolloServerPluginLandingPageLocalDefault() as // deno-lint-ignore no-explicit-any
 any;
+
+@ObjectType()
+class HelloWorld {
+  @Field()
+  hello!: string;
+}
+
+@Resolver()
+export class Resolver_HelloWorld {
+  @Query(() => HelloWorld)
+  hello(): HelloWorld {
+    return {
+      hello: "world",
+    };
+  }
+}
 
 @Module({
   imports: [
@@ -17,8 +39,8 @@ any;
         playground_plugin,
       ],
     }),
-    KnotsExchange_module,
+    Module_KnotsExchange,
   ],
-  providers: [],
+  providers: [Resolver_HelloWorld],
 })
 export class AppModule {}
