@@ -15,7 +15,27 @@ export function CombineType<
 >(
   source: T,
   instruction: U,
-): Source<T, U> {
+): <
+  R extends
+    | Type<
+      // deno-lint-ignore no-explicit-any
+      any
+    >["prototype"]
+    | null = null,
+>(
+  ...args: Type<unknown>[]
+) =>
+  & Source<T, U>
+  & Type<
+    R extends null ? {
+        [
+          K in keyof (typeof args)[number]["prototype"] as K extends string ? K
+            : never
+        ]: (typeof args)[number]["prototype"][K] extends never ? never
+          : (typeof args)[number]["prototype"][K];
+      }
+      : R
+  > {
   const {
     omit,
     pick,
@@ -55,7 +75,9 @@ export function CombineType<
   ) {
   }
 
-  return GeneratedObjectType as Source<T, U>;
+  return () =>
+    GeneratedObjectType as // deno-lint-ignore no-explicit-any
+    any;
 }
 
 type Source<
@@ -81,28 +103,43 @@ type InstructionType =
   | "pick_force_nullable"
   | "pick";
 
-function MergeType<
-  T extends Type<unknown>[],
-  R extends Type<
-    // deno-lint-ignore no-explicit-any
-    any
-  >["prototype"] = {
-    [K in keyof T[number]["prototype"] as K extends string ? K : never]:
-      T[number]["prototype"][K] extends never ? never
-        : T[number]["prototype"][K];
-  },
+export function MergeType<
+  R extends
+    | Type<
+      // deno-lint-ignore no-explicit-any
+      any
+    >["prototype"]
+    | null = null,
 >(
-  ...args: T
-): Type<R> {
+  ...args: Type<unknown>[]
+): Type<
+  R extends null ? {
+      [
+        K in keyof (typeof args)[number]["prototype"] as K extends string ? K
+          : never
+      ]: (typeof args)[number]["prototype"][K] extends never ? never
+        : (typeof args)[number]["prototype"][K];
+    }
+    : R
+> {
   const len = args.length;
 
   if (len === 0) {
-    return class {} as Type<R>;
+    return class {} as Type<
+      // deno-lint-ignore no-explicit-any
+      any
+    >;
   } else if (len === 1) {
-    return args.pop() as Type<R>;
+    return args.pop() as Type<
+      // deno-lint-ignore no-explicit-any
+      any
+    >;
   }
 
   return args.reduce((first, second) =>
     IntersectionType(first, second)
-  ) as Type<R>;
+  ) as Type<
+    // deno-lint-ignore no-explicit-any
+    any
+  >;
 }
