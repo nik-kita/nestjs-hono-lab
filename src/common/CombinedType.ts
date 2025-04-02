@@ -16,7 +16,6 @@ export function CombineType<
 >(
   source: T,
   instruction: U,
-  purpose: "Object" | "Input" = "Object",
 ): <
   R extends
     | Type<
@@ -27,7 +26,8 @@ export function CombineType<
   ...args: Type<
     Omit<Record<string, unknown>, keyof Source<T, U>["prototype"]>
   >[]
-) =>
+) => Record<
+  "input_type" | "object_type",
   & Source<T, U>
   & Type<
     R extends null ? {
@@ -38,57 +38,68 @@ export function CombineType<
           : (typeof args)[number]["prototype"][K];
       }
       : R
-  > {
-  const {
-    omit,
-    pick,
-    pick_force_nullable,
-    extra,
-  } = Object.entries(instruction).reduce(
-    (acc, [k, v]) => {
-      if (!(k && v)) return acc;
-      if (typeof v === "string") {
-        acc[v as InstructionType].push(k as keyof T);
-      } else {
-        acc.extra[k] = v;
-      }
-
-      return acc;
-    },
-    {
-      extra: {} as Record<string, Type<unknown>>,
-      omit: [] as (keyof T)[],
-      pick: [] as (keyof T)[],
-      pick_force_nullable: [] as (keyof T)[],
-    } satisfies Record<InstructionType, (keyof T)[]> & {
-      extra: Record<string, Type<unknown>>;
-    },
-  );
-
-  const Decorator = purpose === "Input" ? InputType : ObjectType;
-  @Decorator({
-    isAbstract: true,
-  })
-  class GeneratedObjectType extends MergeType(
-    PartialType(PickType(source, pick_force_nullable as never[])),
-    PickType(source, pick as never[]),
-    OmitType(source, omit as never[]),
-    ...Object.entries(extra).map(([prop, clazz]) =>
-      PickType(clazz, [prop] as never[])
-    ),
-  ) {
-  }
-
+  >
+> {
   return (
     ...extra:
       // deno-lint-ignore no-explicit-any
       any[]
-  ) =>
-    MergeType(
-      GeneratedObjectType,
-      ...extra,
-    ) as // deno-lint-ignore no-explicit-any
+  ) => {
+    const generate = (purpose: "Input" | "ObjectType") => {
+      const {
+        omit,
+        pick,
+        pick_force_nullable,
+        extra,
+      } = Object.entries(instruction).reduce(
+        (acc, [k, v]) => {
+          if (!(k && v)) return acc;
+          if (typeof v === "string") {
+            acc[v as InstructionType].push(k as keyof T);
+          } else {
+            acc.extra[k] = v;
+          }
+
+          return acc;
+        },
+        {
+          extra: {} as Record<string, Type<unknown>>,
+          omit: [] as (keyof T)[],
+          pick: [] as (keyof T)[],
+          pick_force_nullable: [] as (keyof T)[],
+        } satisfies Record<InstructionType, (keyof T)[]> & {
+          extra: Record<string, Type<unknown>>;
+        },
+      );
+      const Decorator = purpose === "Input" ? InputType : ObjectType;
+      @Decorator({
+        isAbstract: true,
+      })
+      class GeneratedObjectType extends MergeType(
+        PartialType(PickType(source, pick_force_nullable as never[])),
+        PickType(source, pick as never[]),
+        OmitType(source, omit as never[]),
+        ...Object.entries(extra).map(([prop, clazz]) =>
+          PickType(clazz, [prop] as never[])
+        ),
+      ) {
+      }
+
+      return GeneratedObjectType;
+    };
+
+    return {
+      get input_type() {
+        console.log("input_type");
+        return MergeType(generate("Input"), ...extra);
+      },
+      get object_type() {
+        console.log("object_type");
+        return MergeType(generate("ObjectType"), ...extra);
+      },
+    } as // deno-lint-ignore no-explicit-any
     any;
+  };
 }
 
 type Source<

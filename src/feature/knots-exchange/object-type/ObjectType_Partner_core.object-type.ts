@@ -18,5 +18,5 @@ export class ObjectType_Partner_core extends CombineType(
     is_active: "omit",
     created_at: "pick",
   },
-)<Demo>(Demo) {
+)<Demo>(Demo).object_type {
 }
