@@ -1,5 +1,6 @@
 import { Type } from "@nestjs/common";
 import {
+  InputType,
   IntersectionType,
   ObjectType,
   OmitType,
@@ -15,6 +16,7 @@ export function CombineType<
 >(
   source: T,
   instruction: U,
+  purpose: "Object" | "Input" = "Object",
 ): <
   R extends
     | Type<
@@ -63,7 +65,8 @@ export function CombineType<
     },
   );
 
-  @ObjectType({
+  const Decorator = purpose === "Input" ? InputType : ObjectType;
+  @Decorator({
     isAbstract: true,
   })
   class GeneratedObjectType extends MergeType(
