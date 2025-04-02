@@ -18,12 +18,13 @@ export function CombineType<
 ): <
   R extends
     | Type<
-      // deno-lint-ignore no-explicit-any
-      any
+      unknown
     >["prototype"]
     | null = null,
 >(
-  ...args: Type<unknown>[]
+  ...args: Type<
+    Omit<Record<string, unknown>, keyof Source<T, U>["prototype"]>
+  >[]
 ) =>
   & Source<T, U>
   & Type<
