@@ -76,8 +76,15 @@ export function CombineType<
   ) {
   }
 
-  return () =>
-    GeneratedObjectType as // deno-lint-ignore no-explicit-any
+  return (
+    ...extra:
+      // deno-lint-ignore no-explicit-any
+      any[]
+  ) =>
+    MergeType(
+      GeneratedObjectType,
+      ...extra,
+    ) as // deno-lint-ignore no-explicit-any
     any;
 }
 
