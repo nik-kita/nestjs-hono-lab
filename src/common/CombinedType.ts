@@ -7,56 +7,15 @@ import {
   PickType,
 } from "@nestjs/graphql";
 
-type Source<
-  T extends Type<unknown>,
-  U extends Partial<
-    Record<keyof T["prototype"], InstructionType | Type<unknown>>
-  >,
-  P extends Type<
-    {
-      [
-        K in keyof U as K extends never ? K extends string ? K
-          : never
-          : never
-      ]: unknown;
-    }
-  > =
-    // deno-lint-ignore no-explicit-any
-    any,
-> = Type<
-  {
-    [
-      K in keyof U as K extends string ? U[K] extends "omit" ? never
-        : K
-        : never
-    ]: U[K] extends "pick_force_nullable" ? (T["prototype"][K] | null)
-      : U[K] extends "pick" ? T["prototype"][K]
-      : U[K] extends Type<Record<K, unknown>> ? U[K]["prototype"][K]
-      : K extends keyof P["prototype"] ? P["prototype"][K]
-      : never;
-  }
->;
-
 export function CombineType<
   T extends Type<unknown>,
   U extends Partial<
     Record<keyof T["prototype"], InstructionType | Type<unknown>>
   >,
-  P extends Type<
-    {
-      [
-        K in keyof Source<T, U>["prototype"] as K extends never
-          ? K extends string ? K
-          : never
-          : never
-      ]: unknown;
-    }
-  >[] = [],
 >(
   source: T,
   instruction: U,
-  ...traits: P
-): Source<T, U, P[number]["prototype"]> {
+): Source<T, U> {
   const {
     omit,
     pick,
@@ -93,31 +52,53 @@ export function CombineType<
     ...Object.entries(extra).map(([prop, clazz]) =>
       PickType(clazz, [prop] as never[])
     ),
-    ...traits as Type<unknown>[],
   ) {
   }
 
-  return GeneratedObjectType as Source<T, U, P[number]["prototype"]>;
+  return GeneratedObjectType as Source<T, U>;
 }
+
+type Source<
+  T extends Type<unknown>,
+  U extends Partial<
+    Record<keyof T["prototype"], InstructionType | Type<unknown>>
+  >,
+> = Type<
+  {
+    [
+      K in keyof U as K extends string ? U[K] extends "omit" ? never
+        : K
+        : never
+    ]: U[K] extends "pick_force_nullable" ? (T["prototype"][K] | null)
+      : U[K] extends "pick" ? T["prototype"][K]
+      : U[K] extends Type<Record<K, unknown>> ? U[K]["prototype"][K]
+      : never;
+  }
+>;
 
 type InstructionType =
   | "omit"
   | "pick_force_nullable"
   | "pick";
 
-export function MergeType<
-  T extends Type<unknown>[],
-  R = T[number]["prototype"],
->(
+function MergeType<T extends Type<unknown>[]>(
   ...args: T
-): R {
+): Type<
+  {
+    [K in keyof T[number]["prototype"] as K extends string ? K : never]:
+      T[number]["prototype"][K] extends never ? never
+        : T[number]["prototype"][K];
+  }
+> {
   const len = args.length;
 
   if (len === 0) {
-    return class {} as R;
+    return class {} as Type<T>;
   } else if (len === 1) {
-    return args.pop() as R;
+    return args.pop() as Type<T>;
   }
 
-  return args.reduce((first, second) => IntersectionType(first, second)) as R;
+  return args.reduce((first, second) =>
+    IntersectionType(first, second)
+  ) as Type<T>;
 }
