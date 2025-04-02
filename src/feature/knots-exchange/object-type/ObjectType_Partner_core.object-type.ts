@@ -19,7 +19,7 @@ export class ObjectType_Partner_core extends CombineType(
 ) {}
 
 const x: ObjectType_Partner_core = {
-  _id: 5,
+  _id: +"",
   created_at: new Date(),
 };
 

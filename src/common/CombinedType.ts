@@ -81,24 +81,28 @@ type InstructionType =
   | "pick_force_nullable"
   | "pick";
 
-function MergeType<T extends Type<unknown>[]>(
-  ...args: T
-): Type<
-  {
+function MergeType<
+  T extends Type<unknown>[],
+  R extends Type<
+    // deno-lint-ignore no-explicit-any
+    any
+  >["prototype"] = {
     [K in keyof T[number]["prototype"] as K extends string ? K : never]:
       T[number]["prototype"][K] extends never ? never
         : T[number]["prototype"][K];
-  }
-> {
+  },
+>(
+  ...args: T
+): Type<R> {
   const len = args.length;
 
   if (len === 0) {
-    return class {} as Type<T>;
+    return class {} as Type<R>;
   } else if (len === 1) {
-    return args.pop() as Type<T>;
+    return args.pop() as Type<R>;
   }
 
   return args.reduce((first, second) =>
     IntersectionType(first, second)
-  ) as Type<T>;
+  ) as Type<R>;
 }
