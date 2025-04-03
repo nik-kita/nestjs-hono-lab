@@ -1,28 +1,17 @@
 import { Type } from "@nestjs/common";
-import {
-  InputType,
-  IntersectionType,
-  ObjectType,
-  OmitType,
-  PartialType,
-  PickType,
-} from "@nestjs/graphql";
+import { InputType, ObjectType, PartialType, PickType } from "@nestjs/graphql";
+import { MergeType } from "./MergeType.ts";
 
 export function CombineType<
   T extends Type<unknown>,
-  U extends Partial<
-    Record<keyof T["prototype"], InstructionType | Type<unknown>>
+  U extends Record<
+    keyof T["prototype"],
+    null | InstructionType | Type<unknown>
   >,
 >(
   source: T,
   instruction: U,
-): <
-  R extends
-    | Type<
-      unknown
-    >["prototype"]
-    | null = null,
->(
+): <R extends Type<unknown>["prototype"] | null = null>(
   ...args: Type<
     Omit<Record<string, unknown>, keyof Source<T, U>["prototype"]>
   >[]
@@ -41,17 +30,13 @@ export function CombineType<
   >
 > {
   return (
-    ...extra:
-      // deno-lint-ignore no-explicit-any
+    ...extra: // deno-lint-ignore no-explicit-any
       any[]
   ) => {
     const generate = (purpose: "Input" | "ObjectType") => {
-      const {
-        omit,
-        pick,
-        pick_force_nullable,
-        extra,
-      } = Object.entries(instruction).reduce(
+      const { pick, pick_force_nullable, extra } = Object.entries(
+        instruction,
+      ).reduce(
         (acc, [k, v]) => {
           if (!(k && v)) return acc;
           if (typeof v === "string") {
@@ -64,7 +49,6 @@ export function CombineType<
         },
         {
           extra: {} as Record<string, Type<unknown>>,
-          omit: [] as (keyof T)[],
           pick: [] as (keyof T)[],
           pick_force_nullable: [] as (keyof T)[],
         } satisfies Record<InstructionType, (keyof T)[]> & {
@@ -78,12 +62,10 @@ export function CombineType<
       class GeneratedObjectType extends MergeType(
         PartialType(PickType(source, pick_force_nullable as never[])),
         PickType(source, pick as never[]),
-        OmitType(source, omit as never[]),
         ...Object.entries(extra).map(([prop, clazz]) =>
           PickType(clazz, [prop] as never[])
         ),
-      ) {
-      }
+      ) {}
 
       return GeneratedObjectType;
     };
@@ -104,64 +86,21 @@ export function CombineType<
 
 type Source<
   T extends Type<unknown>,
-  U extends Partial<
-    Record<keyof T["prototype"], InstructionType | Type<unknown>>
+  U extends Record<
+    keyof T["prototype"],
+    null | InstructionType | Type<unknown>
   >,
 > = Type<
   {
     [
-      K in keyof U as K extends string ? U[K] extends "omit" ? never
+      K in keyof U as K extends string ? U[K] extends null ? never
         : K
         : never
-    ]: U[K] extends "pick_force_nullable" ? (T["prototype"][K] | null)
+    ]: U[K] extends "pick_force_nullable" ? T["prototype"][K] | null
       : U[K] extends "pick" ? T["prototype"][K]
       : U[K] extends Type<Record<K, unknown>> ? U[K]["prototype"][K]
       : never;
   }
 >;
 
-type InstructionType =
-  | "omit"
-  | "pick_force_nullable"
-  | "pick";
-
-export function MergeType<
-  R extends
-    | Type<
-      // deno-lint-ignore no-explicit-any
-      any
-    >["prototype"]
-    | null = null,
->(
-  ...args: Type<unknown>[]
-): Type<
-  R extends null ? {
-      [
-        K in keyof (typeof args)[number]["prototype"] as K extends string ? K
-          : never
-      ]: (typeof args)[number]["prototype"][K] extends never ? never
-        : (typeof args)[number]["prototype"][K];
-    }
-    : R
-> {
-  const len = args.length;
-
-  if (len === 0) {
-    return class {} as Type<
-      // deno-lint-ignore no-explicit-any
-      any
-    >;
-  } else if (len === 1) {
-    return args.pop() as Type<
-      // deno-lint-ignore no-explicit-any
-      any
-    >;
-  }
-
-  return args.reduce((first, second) =>
-    IntersectionType(first, second)
-  ) as Type<
-    // deno-lint-ignore no-explicit-any
-    any
-  >;
-}
+type InstructionType = "pick_force_nullable" | "pick";

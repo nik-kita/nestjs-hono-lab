@@ -15,8 +15,9 @@ export class ObjectType_Partner_core extends CombineType(
   Type_Partner_Required,
   {
     _id: "pick",
-    is_active: "omit",
     created_at: "pick",
+    is_active: null,
+    updated_at: null
   },
 )<Demo>(Demo).object_type {
 }
@@ -26,8 +27,9 @@ export class InputType_Partner_core extends CombineType(
   Type_Partner_Required,
   {
     _id: "pick",
-    is_active: "omit",
     created_at: "pick",
+    is_active: null,
+    updated_at: null
   },
 )<Demo>(Demo).input_type {
 }
