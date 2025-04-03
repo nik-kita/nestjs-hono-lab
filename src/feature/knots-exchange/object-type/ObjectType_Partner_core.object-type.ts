@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 import { CombineType } from "../../../common/CombinedType.ts";
 import { Type_Partner_Required } from "../type/Type_Partner_Required.type.ts";
 
@@ -19,4 +19,15 @@ export class ObjectType_Partner_core extends CombineType(
     created_at: "pick",
   },
 )<Demo>(Demo).object_type {
+}
+
+@InputType()
+export class InputType_Partner_core extends CombineType(
+  Type_Partner_Required,
+  {
+    _id: "pick",
+    is_active: "omit",
+    created_at: "pick",
+  },
+)<Demo>(Demo).input_type {
 }
